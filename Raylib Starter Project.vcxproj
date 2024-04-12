@@ -105,9 +105,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\raylib;$(SolutionDir)\raylib\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +134,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\brick.cpp" />
+    <ClCompile Include="src\paddle.cpp" />
+    <ClCompile Include="src\scenes\game.cpp" />
+    <ClCompile Include="src\ball.cpp" />
+    <ClCompile Include="src\debug.cpp" />
+    <ClCompile Include="src\scenes\menu.cpp" />
+    <ClCompile Include="src\scene.cpp" />
+    <ClCompile Include="src\sceneManager.cpp" />
+    <ClCompile Include="src\application.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\brick.h" />
+    <ClInclude Include="src\paddle.h" />
+    <ClInclude Include="src\gameManager.h" />
+    <ClInclude Include="src\scenes\game.h" />
+    <ClInclude Include="src\ball.h" />
+    <ClInclude Include="src\debug.h" />
+    <ClInclude Include="src\scenes\menu.h" />
+    <ClInclude Include="src\scene.h" />
+    <ClInclude Include="src\sceneManager.h" />
+    <ClInclude Include="src\application.h" />
+    <ClInclude Include="src\constant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
