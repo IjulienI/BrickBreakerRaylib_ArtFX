@@ -1,9 +1,10 @@
 #include "brick.h"
 
-Brick::Brick(Vector2 postition, Vector2 size)
+Brick::Brick(Vector2 postition, Vector2 size, GameManager* gameManager)
 {
 	this->position = postition;
 	this->size = size;
+	this->gameManager = gameManager;
 }
 
 Brick::~Brick()
@@ -21,8 +22,10 @@ void Brick::TakeDamage()
 {
 	life--;
 	color = RED;
+	gameManager->AddScore(5);
 	if (life == 0) {
 		destroy = true;
+		gameManager->AddScore(150);
 	}
 }
 

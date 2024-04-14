@@ -2,9 +2,10 @@
 #define SCENEMANAGER_H
 
 #include <vector>
-#include "scene.h"
 #include "./scenes/menu.h"
 #include "./scenes/game.h"
+
+class Scene;
 
 enum Scenes {
 	MENU,

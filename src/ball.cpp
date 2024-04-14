@@ -1,7 +1,5 @@
 #include "ball.h"
 
-#include "./gameManager.h"
-
 
 void Ball::WallCollision()
 {
@@ -18,7 +16,7 @@ void Ball::WallCollision()
 		position.y = radius;
 	}
 	else if (position.y + radius > WINDOW_SIZE.y) {
-		life--;
+		gameManager->RemoveLife();
 		velocity.y *= -1;
 		velocity.x = 0;
 		onPaddle = true;
@@ -56,23 +54,23 @@ void Ball::BrickCollision(Brick* brick)
 		if (!brick->GetDestoyed()) {
 			if (position.x - radius < brick->GetPosition().x) {
 				brick->TakeDamage();
-				position.x = brick->GetPosition().x - radius;
 				velocity.x *= -1;
+				position.x = brick->GetPosition().x - radius - 1;
 			}
 			if (position.x + radius > brick->GetPosition().x + brick->GetSize().x) {
 				brick->TakeDamage();
-				position.x = brick->GetPosition().x + brick->GetSize().x + radius;
 				velocity.x *= -1;
+				position.x = brick->GetPosition().x + brick->GetSize().x + radius + 1;
 			}
 			if (position.y - radius < brick->GetPosition().y) {
 				brick->TakeDamage();
-				position.y = brick->GetPosition().y - radius;
 				velocity.y *= -1;
+				position.y = brick->GetPosition().y - radius - 1;
 			}
 			if (position.y + radius > brick->GetPosition().y + brick->GetSize().y) {
 				brick->TakeDamage();
-				position.y = brick->GetPosition().y + brick->GetSize().y + radius;
 				velocity.y *= -1;
+				position.y = brick->GetPosition().y + brick->GetSize().y + radius +1;
 			}
 		}
 	}
@@ -83,12 +81,14 @@ void Ball::SetOnPaddle()
 	onPaddle = true;
 }
 
-Ball::Ball(Vector2 position, Vector2 velocity, int radius, Color color)
+Ball::Ball(Vector2 position, Vector2 velocity, int radius, Color color,GameManager* gameManager)
 {
 	this->position = position;
 	this->velocity = velocity;
 	this->radius = radius;
 	this->color = color;
+	this->gameManager = gameManager;
+	this->paddle = nullptr;
 }
 
 Ball::~Ball()
@@ -119,4 +119,8 @@ void Ball::Update(float dt)
 void Ball::Draw()
 {
 	DrawCircle(position.x, position.y, radius, color);
+}
+
+Ball::Ball()
+{
 }

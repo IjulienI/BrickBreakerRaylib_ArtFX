@@ -48,4 +48,5 @@ void Application::Draw()
 void Application::Clear()
 {
 	sceneManager->~SceneManager();
+	CloseWindow();
 }

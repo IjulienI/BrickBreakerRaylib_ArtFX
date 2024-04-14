@@ -4,11 +4,12 @@ SceneManager* sceneManager = nullptr;
 
 SceneManager::SceneManager()
 {
-	SetScene(GAME);
+	SetScene(MENU);
 }
 
 SceneManager::~SceneManager()
 {
+	currentScene->~Scene();
 }
 
 void SceneManager::SetScene(enum Scenes newScene)
@@ -16,7 +17,7 @@ void SceneManager::SetScene(enum Scenes newScene)
 	delete currentScene;
 	switch (newScene) {
 	case MENU:
-		menu = new Menu();
+		menu = new Menu(this);
 		currentScene = menu;
 		break;
 	case GAME:

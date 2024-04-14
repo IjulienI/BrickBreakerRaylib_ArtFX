@@ -7,12 +7,12 @@
 #include "../ball.h"
 #include "../paddle.h"
 #include "../brick.h"
-#include "../sceneManager.h"
+#include "../gameManager.h"
 
 class Game : public Scene
 {
 private:
-	Ball ball = Ball(Vector2{ 500, 500 }, Vector2{ 0, -500 }, 5, WHITE);
+	Ball ball;
 	Paddle paddle = Paddle(Vector2{ WINDOW_SIZE.x / 2 + 100, WINDOW_SIZE.y - 50 }, Vector2{ 100,25 }, WHITE);
 
 	std::vector<Brick> bricks;
@@ -20,6 +20,8 @@ private:
 
 	void InitBricks();
 	void Reset();
+	void ResetLevel();
+	void DrawScore();
 public:
 	Game();
 	~Game();
